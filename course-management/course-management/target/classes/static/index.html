@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Course Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Student Course Management System</h1>
+
+<nav>
+<button onclick="show('dashboard')">Dashboard</button>
+<button onclick="show('students')">Students</button>
+<button onclick="show('courses')">Courses</button>
+<button onclick="show('enrollments')">Enrollments</button>
+</nav>
+
+<section id="dashboard">
+<h2>Dashboard</h2>
+
+<div class="cards">
+<div>Total Students: <b id="totalStudents">0</b></div>
+<div>Total Courses: <b id="totalCourses">0</b></div>
+<div>Total Enrollments: <b id="totalEnrollments">0</b></div>
+</div>
+
+<div id="courseCounts"></div>
+</section>
+
+<section id="students" class="hide">
+<h2>Students</h2>
+
+<form id="studentForm">
+<input type="hidden" id="studentId">
+<input id="studentName" placeholder="Name">
+<input id="studentEmail" placeholder="Email">
+<input id="studentPhone" placeholder="Phone">
+<input type="date" id="dateOfJoining">
+
+<select id="studentCourse">
+<option value="">Select Course</option>
+</select>
+
+<button type="submit">Add Student</button>
+</form>
+
+<p id="studentMsg"></p>
+
+<div class="tools">
+<input id="search" placeholder="Search student" onkeyup="searchStudents()">
+
+<select id="courseFilter" onchange="filterStudents()">
+<option value="">All Courses</option>
+</select>
+
+<button type="button" onclick="exportStudents()">Export Students CSV</button>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="studentTable"></tbody>
+</table>
+
+<div class="pagination">
+<button type="button" onclick="previousPage()">Previous</button>
+<span id="pageNumber">Page 1</span>
+<button type="button" onclick="nextPage()">Next</button>
+</div>
+</section>
+
+<section id="courses" class="hide">
+<h2>Courses</h2>
+
+<form id="courseForm">
+<input type="hidden" id="courseId">
+<input id="courseName" placeholder="Course Name">
+<input id="courseDuration" placeholder="Duration">
+<button type="submit">Add Course</button>
+</form>
+
+<p id="courseMsg"></p>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Course</th>
+<th>Duration</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="courseTable"></tbody>
+</table>
+</section>
+
+<section id="enrollments" class="hide">
+<h2>Enroll Student</h2>
+
+<form id="enrollmentForm">
+<select id="enrollmentStudent">
+<option value="">Select Student</option>
+</select>
+
+<select id="enrollmentCourse">
+<option value="">Select Course</option>
+</select>
+
+<input type="date" id="enrollmentDate">
+
+<button type="submit">Enroll</button>
+</form>
+
+<p id="enrollmentMsg"></p>
+
+<button type="button" onclick="exportEnrollments()">Export Enrollments CSV</button>
+
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Course</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody id="enrollmentTable"></tbody>
+</table>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
